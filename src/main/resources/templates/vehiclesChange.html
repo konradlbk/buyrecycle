@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="fragments :: links"></div>
+
+</head>
+<body>
+<div th:replace="fragments :: header"></div>
+
+<div class="container marketing">
+    <div class="container row col-md-12">
+        <form th:action="@{'/company/add/changeVehicle/'+ ${id_company}}" th:object="${vehicle}" method="post">
+            <div class="row">
+                <div class="col-md-5">
+                    <label for="capacity">Capacity, t: </label>
+                </div>
+                <div class="col-md-7">
+                    <select class="form-control" id="capacity" th:field="*{capacity}">
+                        <option th:each="capacity : ${capacityList}" th:text="${capacity}"
+                                th:value="${capacity}"></option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-5">
+                    <label for="length">Length of the coachwork: </label>
+                </div>
+                <div class="col-md-7">
+                    <input class="form-control" id="length" th:field="*{length}">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-5">
+                    <label for="height">Height of the coachwork: </label>
+                </div>
+                <div class="col-md-7">
+                    <input class="form-control" id="height" th:field="*{height}">
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-5">
+                    <label for="width">Width of the coachwork: </label>
+                </div>
+                <div class="col-md-7">
+                    <input class="form-control" id="width" th:field="*{width}">
+                </div>
+
+
+
+                <div class="row">
+                    <div class="col-md-offset-3 col-md-9">
+                        <input type="submit" th:value="Submit">
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div th:replace="fragments :: footer"></div>
+</body>
+</html>

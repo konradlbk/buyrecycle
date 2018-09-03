@@ -1,0 +1,8 @@
+
+.icon-mail:before { content: '\e800'; } /* '' */
+.icon-user:before { content: '\e801'; } /* '' */
+.icon-basket:before { content: '\e802'; } /* '' */
+.icon-location:before { content: '\e803'; } /* '' */
+.icon-desktop:before { content: '\f108'; } /* '' */
+.icon-binoculars:before { content: '\f1e5'; } /* '' */
+.icon-map-o:before { content: '\f278'; } /* '' */

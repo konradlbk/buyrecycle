@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
+<head th:replace="fragments :: links">
+    <link rel="css/fontello.css" type="text/css"/>
+</head>
+<body>
+
+<div th:replace="fragments :: header"></div>
+
+<div class="container">
+    <h2>Offer details</h2><br>
+
+    <div class="row">
+        <div class="row">
+            <form th:action="@{/reservation/save}" th:object="${offerDetails}" method="post">
+                <input th:value="*{id}" th:field="*{id}" hidden>
+                <!--<input th:value="*{event}" th:field="*{event}" hidden>-->
+                <div class="row">
+                    <div class="col-xl-7">
+                        <label for="user">From:</label>
+                    </div>
+                    <div class="col-md-5">
+                        <input id="user" th:value="*{ownerName}" readonly>
+                    </div>
+                </div><br>
+                <div class="row">
+                    <div class="col-xl-7">
+                        <label for="offerName">Offer name:</label>
+                    </div>
+                    <div class="col-md-5">
+                        <input id="offerName" th:value="*{offerName}" readonly>
+                    </div>
+                </div><br>
+                <div class="row">
+                    <div class="col-md-7">
+                        <label for="material">Material:</label>
+                    </div>
+                    <div class="col-md-5">
+                        <input id="material" th:value="*{material.name}" readonly></input>
+                    </div>
+                </div><br>
+
+                <div class="row">
+                    <div class="col-md-7">
+                        <label for="materialForm">Material form:</label>
+                    </div>
+                    <div class="col-md-5">
+                        <input id="materialForm" th:value="*{material.form}" readonly></input>
+                    </div>
+                </div><br>
+
+                <div class="row">
+                    <div class="col-md-7">
+                        <label for="color">Color:</label>
+                    </div>
+                    <div class="col-md-5">
+                        <input id="color" th:value="*{material.color}" readonly></input>
+                    </div>
+                </div><br>
+
+                <div class="row">
+                    <div class="col-md-7">
+                        <label for="pricekg">Description:</label>
+                    </div>
+                    <div class="col-md-5">
+                        <input id="pricekg" th:value="*{material.description}" readonly></input>
+                    </div>
+                </div><br>
+
+                <div class="row">
+                    <div class="col-md-7">
+                        <label for="package">Package:</label>
+                    </div>
+                    <div class="col-md-5">
+                        <input id="package" th:value="*{tara.packageType}" readonly></input>
+                    </div>
+                </div><br>
+
+                <div class="row">
+                    <div class="col-md-7">
+                        <label for="seal">Seal:</label>
+                    </div>
+                    <div class="col-md-5">
+                        <input id="seal" th:value="*{tara.seal}" readonly></input>
+                    </div>
+                </div><br>
+
+                <div class="row">
+                    <div class="col-md-7">
+                        <label for="weight">Weight:</label>
+                    </div>
+                    <div class="col-md-5">
+                        <input id="weight" th:value="*{tara.weight}" readonly></input>
+                    </div>
+                </div><br>
+
+                <div class="row">
+                    <div class="col-md-7">
+                        <label for="pckprice">Weight:</label>
+                    </div>
+                    <div class="col-md-5">
+                        <input id="pckprice" th:value="*{tara.packagePrice}" readonly></input>
+                    </div>
+                </div><br>
+
+                <div class="row">
+                    <div class="col-md-7">
+                        <label for="pckdetails">Package details:</label>
+                    </div>
+                    <div class="col-md-5">
+                        <input id="pckdetails" th:value="*{tara.details}" readonly></input>
+                    </div>
+                </div><br>
+
+
+        </div>
+        <div class="col-md-5">
+        </div>
+    </div>
+
+
+    </form>
+</div>
+</div>
+
+</div>
+
+<div th:replace="fragments :: footer"></div>
+
+</body>
+</html>

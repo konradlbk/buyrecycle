@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="fragments :: links "></div>
+</head>
+<body>
+
+<div th:replace="fragments :: header"></div>
+
+<div class="container marketing">
+    <h3>Companies List:</h3>
+    <div class="row ">
+        <div class="row table-header col-md-12 border-table-header">
+            <div class="col-md-1">ID</div>
+            <div class="col-md-3">Name</div>
+            <div class="col-md-2">NIP</div>
+            <div class="col-md-3">Address</div>
+            <div class="col-md-3">Contacts</div>
+
+        </div>
+        <div class="row table-row col-md-12 border-table-row" th:each="company : ${deliveryCompanies}">
+            <div class="col-md-1"><p th:text="${company.getId()}"></p></div>
+            <div class="col-md-3"><p th:text="${company.getName()}"></p></div>
+            <div class="col-md-2"><p th:text="${company.getNIP()}"></p></div>
+            <div class="col-md-3"><p th:text="${company.getAddress().getAllAddress()}"></p></div>
+            <div class="col-md-3"><p th:text="${company.getContacts()}"></p></div>
+
+        </div>
+    </div>
+</div>
+
+<div th:replace="fragments :: footer"></div>
+
+</body>
+</html>

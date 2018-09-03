@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
+<head th:replace="fragments :: links">
+</head>
+<body>
+
+<div th:replace="fragments :: header"></div>
+
+
+<div class="container">
+    <br>
+    <legend>Current companies</legend><br>
+    <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+        <option>-</option>
+        <option value="/company/list/sort/name">A-Z</option>
+        <option value="/company/list/sort/reverseName">Z-A</option>
+
+    </select>
+
+    <table class="table table-striped table-hover ">
+        <thead>
+        <tr>
+            <th>Company</th>
+            <th>Address</th>
+            <th>phone number</th>
+            <th>E-mail</th>
+            <th>NIP</th>
+            <th> </th>
+        </tr>
+        </thead>
+        <tbody th:each="company : ${companyList}">
+        <tr class="warning">
+
+            <td th:text="${company.getName()}"></td>
+            <td th:text="${company.getAddress().getAllAddress()}"></td>
+            <td th:text="${company.getPhoneNumber()}"></td>
+            <td th:text="${company.getEmail()}"></td>
+            <td th:text="${company.getNIP()}"></td>
+            <td><a class="btn btn-danger btn-xs" th:href="@{'/company/details/' + ${company.getId()}}">Details</a></td>
+        </tr>
+
+        </tbody>
+    </table>
+
+
+
+</div>
+
+<div th:replace="fragments :: footer"></div>
+
+</body>
+</html>

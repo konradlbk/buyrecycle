@@ -1,0 +1,93 @@
+
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: links">
+
+</head>
+<body>
+<div th:replace="fragments :: header"></div>
+
+<div class="container">
+    <form class="form-horizontal"  method="POST" th:action="@{/register}" th:object="${user_dto}">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <br><br>
+                <h2>Register New User</h2>
+                <hr>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 field-label-responsive">
+                <label for="username">Username</label>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                        <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user"></i></div>
+                        <input type="text" class="form-control" id="username"
+                               placeholder="Login" th:field="*{username}" required autofocus>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-control-feedback">
+                        <span class="text-danger align-middle">
+                            <!-- Put name validation error messages here -->
+                        </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3 field-label-responsive">
+                <label for="password">Password</label>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group has-danger">
+                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                        <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-key"></i></div>
+                        <input type="password" class="form-control" id="password"
+                               placeholder="Password" th:field="*{password}"required>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-control-feedback" th:if="${error_message} !=null">
+                        <span class="text-danger align-middle">
+                            <i class="fa fa-close" style="color: #dc3545" th:text="${error_message}">m</i>
+                        </span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 field-label-responsive">
+                <label for="confirm-password">Confirm Password</label>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                        <div class="input-group-addon" style="width: 2.6rem">
+                            <i class="fa fa-repeat"></i>
+                        </div>
+                        <input type="password" class="form-control"
+                               id="confirm-password" placeholder="Confirm Password" th:field="*{confirm_password}" required>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <button type="submit" class="btn btn-outline-success btn-sm" style="border-top-left-radius: 5px; border-bottom-left-radius: 5px;
+border-top-right-radius: 5px; border-bottom-right-radius: 5px"><i class="fa fa-user-plus"></i>Register</button>
+            </div>
+        </div>
+    </form>
+</div>
+<br><br><br><br><br>
+<div th:replace="fragments :: footer"></div>
+
+</body>
+</html>

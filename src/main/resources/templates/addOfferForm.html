@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: links">
+    <link rel="css/fontello.css" type="text/css"/>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div th:replace="fragments :: header"></div>
+
+<div class="container">
+
+
+
+
+    <form class="form-horizontal" th:action="@{/addOfferForm}" th:object="${offer}" method="post">
+        <br><br>
+        <fieldset>
+            <h2>New Offer</h2><br>
+            <h2>Materials</h2>
+            <br>
+
+            <div class="form-group">
+                <label for="description" class="col-lg-2 control-label">Offer Title</label>
+                <div class="col-md-5">
+                    <input class="form-control" id="description" type="text" th:field="*{offerName}">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="color" class="col-lg-2 control-label">Color</label>
+                <div class="col-md-5">
+                    <input class="form-control" id="color" type="text" th:field="*{material.color}">
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="materialName" class="col-lg-2 control-label">Material</label>
+                <div class="col-md-5">
+                    <select class="form-control" id="materialName" th:field="*{material.name}">
+                        <option th:each="itermaterials : ${materialNames}" th:text="${itermaterials}" th:value="${itermaterials}"></option>
+
+                    </select>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label for="price" class="col-lg-2 control-label">Price per kg [$]</label>
+                <div class="col-md-5">
+                    <input class="form-control" id="price" type="number" th:field="*{material.price}">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="materialForm" class="col-lg-2 control-label">Material Form</label>
+                <div class="col-md-5">
+                    <select class="form-control" id="materialForm" th:field="*{material.form}">
+                        <option th:each="iterform : ${materialForm}" th:text="${iterform}" th:value="${iterform}"></option>
+
+                    </select>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label for="description" class="col-lg-2 control-label">Description</label>
+                <div class="col-lg-10">
+                    <textarea class="form-control" style="resize: none" maxlength="350" rows="5" id="mdetails" type="text" th:field="*{material.description}"></textarea>
+                    <span class="help-block">Write material description</span>
+                </div>
+            </div>
+
+
+
+<br><br>
+            <h2>Tara</h2>
+            <br>
+
+            <div class="form-group">
+                <label for="materialForm" class="col-lg-2 control-label">Package type</label>
+                <div class="col-md-5">
+                    <select class="form-control" id="packagesType" th:field="*{tara.packageType}">
+                        <option th:each="iterpackage : ${packageTypes}" th:text="${iterpackage}" th:value="${iterpackage}"></option>
+
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="color" class="col-lg-2 control-label">Seal</label>
+                <div class="col-md-5">
+                    <input class="form-control" id="seal" type="text" th:field="*{tara.seal}">
+
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label for="price" class="col-lg-2 control-label">Overall weight [kg]</label>
+                <div class="col-md-5">
+                    <input class="form-control" id="weight" type="number" th:field="*{tara.weight}">
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label for="price" class="col-lg-2 control-label">Package price [$] </label>
+                <div class="col-md-5">
+                    <input class="form-control" id="packagePrice" type="number" th:field="*{tara.packageType}">
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label for="description" class="col-lg-2 control-label">Description</label>
+                <div class="col-lg-10">
+                    <textarea class="form-control" style="resize: none" maxlength="350" rows="5" id="pdetails" type="text" th:field="*{tara.details}"></textarea>
+                    <span class="help-block">Write package details (package condition, size etc.)</span>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br><br>
+            <div class="form-group">
+                <div class="col-lg-10 col-lg-offset-2">
+                    <button type="reset" class="btn btn-default">Reset</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <br><br>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+
+
+
+
+</div>
+
+<br><br><br>
+
+
+
+
+
+
+
+<div th:replace="fragments :: footer"></div>
+
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="fragments :: links"></div>
+
+</head>
+<body>
+<div th:replace="fragments :: header"></div>
+
+<div class="container marketing">
+
+    <div class="row">
+        <form th:action="@{/company/add}" th:object="${company}" method="post">
+            <div class="row">
+                <div class="col-md-5">
+                    <label for="companyName">Company name: </label>
+                </div><br>
+                <div class="col-md-7">
+                    <input class="form-control" id="companyName" th:field="*{name}">
+                </div>
+            </div><br>
+            <div class="row">
+                <div class="col-md-5">
+                    <label for="companyNIP">NIP: </label>
+                </div>
+                <div class="col-md-7">
+                    <input class="form-control" id="companyNIP" type="text" th:field="*{NIP}">
+                </div>
+            </div>
+<br>
+            <div class="row">
+                <div class="col-md-5">
+                    <label for="companyPostcode">Postcode: </label>
+                </div>
+                <div class="col-md-7">
+                    <input class="form-control" id="companyPostcode" type="text" th:field="*{address.postcode}">
+                </div>
+            </div><br>
+            <div class="row">
+                <div class="col-md-5">
+                    <label for="companyCountry">Country: </label>
+                </div>
+                <div class="col-md-7">
+                    <input class="form-control" id="companyCountry" type="text" th:field="*{address.country}">
+                </div>
+            </div><br>
+            <div class="row">
+                <div class="col-md-5">
+                    <label for="companyTown">Town: </label>
+                </div>
+                <div class="col-md-7">
+                    <input class="form-control" id="companyTown" type="text" th:field="*{address.town}">
+                </div>
+            </div><br>
+            <div class="row">
+                <div class="col-md-5">
+                    <label for="companyStreet">Street: </label>
+                </div>
+                <div class="col-md-7">
+                    <input class="form-control" id="companyStreet" type="text" th:field="*{address.street}">
+                </div>
+            </div><br>
+            <div class="row">
+                <div class="col-md-5">
+                    <label for="companyNumberOfBuilding">Number of building: </label>
+                </div>
+                <div class="col-md-7">
+                    <input class="form-control" id="companyNumberOfBuilding" type="text"
+                           th:field="*{address.numberOfBuilding}">
+                </div>
+            </div>
+<br>
+            <div class="row">
+                <div class="col-md-5">
+                    <label for="phoneNumber">Phone number: </label>
+                </div>
+                <div class="col-md-7">
+                    <input class="form-control" id="phoneNumber" type="number" th:field="*{phoneNumber}">
+                </div>
+            </div><br>
+            <div class="row">
+                <div class="col-md-5">
+                    <label for="email">E-mail: </label>
+                </div>
+                <div class="col-md-7">
+                    <input class="form-control" id="email" type="text" th:field="*{email}">
+                </div>
+            </div><br>
+            <div class="row">
+                <div class="col-md-5">
+                    <label for="email">Transport company </label>
+                </div>
+                <div class="col-md-7">
+                    <input class="form-control" id="isTransport" type="checkbox" th:field="*{transport}">
+                </div>
+            </div>
+
+<br>
+            <div class="row">
+                <div class="col-md-offset-3 col-md-9">
+                    <input type="submit" class="btn btn-success" th:value="Submit">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div th:replace="fragments :: footer"></div>
+</body>
+</html>

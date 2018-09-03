@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
+<head th:replace="fragments :: links">
+    <link rel="css/fontello.css" type="text/css"/>
+</head>
+<body>
+
+<div th:replace="fragments :: header"></div>
+
+<div class="container">
+    <h2>User Panel</h2><br><br>
+
+    <div class="row">
+        <div class="row">
+            <form action="/panel/" method="get" th:object="${currentUser}">
+                <div class="row">
+                    <div class="col-xl-5">
+                        <label for="userName">Username:</label>
+                    </div>
+                    <div class="col-md-5">
+                        <input id="userName" th:value="*{getUsername()}" readonly>
+                    </div>
+                </div>
+
+                <br>
+
+                <div class="row">
+                    <div class="col-xl-5">
+                        <label for="name">Full Name:</label>
+                    </div>
+                    <div class="col-md-7" style="width: 293px">
+                        <input id="name" class="form-control" name="name" th:value="*{name}" th:field="*{name}">
+                        <!--<p id="ready" th:text="*{name}"></p>-->
+                    </div>
+                </div>
+<br>
+
+
+
+
+                <div class="row">
+                    <div class="col-md-5">
+                        <label for="company">Company:</label>
+                    </div>
+                    <div class="col-md-5">
+                        <input id="company" name="editName" th:if="*{company != null}" th:value="*{company.name}" readonly>
+                        <!--<p id="ready" th:text="*{name}"></p>-->
+                    </div>
+                    <div class="col-md-2">
+                    <span th:if="*{company == null}"><a href="/company/add" class="btn btn-outline-success"><i class="fas fa-plus"></i>&nbsp; Company</a></span>
+
+                    </div>
+                </div>
+
+
+
+
+        </div>
+
+    </div><br><br><br>
+<div class="row">
+    <button type="submit" class="btn btn-primary">Edit</button>
+
+</div>
+
+    </form>
+</div>
+</div>
+
+</div>
+
+<div th:replace="fragments :: footer"></div>
+
+</body>
+</html>

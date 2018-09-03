@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="fragments :: links "></div>
+</head>
+<body>
+
+<div th:replace="fragments :: header"></div>
+
+<div class="container marketing">
+    <h3>Vehicles pricelist:</h3>
+    <div class="row ">
+        <div class="row table-header col-md-12 border-table-header">
+            <div class="col-md-2">Price for 2t vehicle:</div>
+            <div class="col-md-2">Price for 5t vehicle:</div>
+            <div class="col-md-2">Price for 10t vehicle:</div>
+            <div class="col-md-2">Price for 20t vehicle:</div>
+
+        </div>
+        <div class="row table-row col-md-12 border-table-row" th:object="${company}">
+            <div class="col-md-2"><p th:text="${company.getPriceList().getPrice_2()}"></p></div>
+            <div class="col-md-2"><p th:text="${company.getPriceList().getPrice_5()}"></p></div>
+            <div class="col-md-2"><p th:text="${company.getPriceList().getPrice_10()}"></p></div>
+            <div class="col-md-2"><p th:text="${company.getPriceList().getPrice_20()}"></p></div>
+        </div>
+
+        <td><a class="btn btn-danger btn-xs" th:href="@{'/company/details/' + ${company.getId()}}">Details</a></td>
+
+    </div>
+</div>
+
+<div th:replace="fragments :: footer"></div>
+
+</body>
+</html>

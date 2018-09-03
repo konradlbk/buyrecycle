@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
+<head th:replace="fragments :: links">
+</head>
+<body>
+
+<div th:replace="fragments :: header"></div>
+
+<div class="container">
+    <!--Treść strony-->
+    <br>
+    <h2>Current Offers</h2><br><br>
+    <div class="row">
+    <!--<div style="width: 250px">-->
+            <div class="col-md-1">
+       <p style="padding-top: 6px">Material:</p>
+            </div>
+        <div class="col-md-3">
+
+        <form class="form-inline" action="/offerslist/" method="get">
+        <select class="form-control" id="material" name="material">
+            <option value="PC">PC</option>
+            <option value="PA">PA</option>
+            <option value="PVC">PVC</option>
+            <option value="PE">PE</option>
+            <option value="PET">PET</option>
+            <option value="PC_ABS">PC_ABS</option>
+            <option value="all">All Materials</option>
+            <!--<option th:each="itermaterials : ${materials}" th:text="${itermaterials}" th:value="${itermaterials}">-->
+            </option>
+        </select>
+
+        <!--<in type="submit" value="Submit">-->
+
+
+        <button type="submit" class="btn btn-primary">Filter</button>
+
+    </form></div>
+
+            <div class="col-md-1">
+        <p style="padding-top: 6px">Forms:</p>
+            </div>
+        <div class="col-md-3">
+
+        <form class="form-inline" action="/offerslist/" method="get">
+            <select class="form-control" id="materialform" name="materialform">
+                <option value="Cluster">Cluster</option>
+                <option value="Panel">Panel</option>
+                <option value="Billet">Billet</option>
+                <option value="allForms">All Forms</option>
+                <!--<option th:each="itermaterials : ${materials}" th:text="${itermaterials}" th:value="${itermaterials}">-->
+
+                </option>
+            </select>
+
+            <!--<in type="submit" value="Submit">-->
+
+
+            <button type="submit" class="btn btn-primary">Filter</button>
+
+        </form></div>
+        <div class="col-md-3">
+        <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+            <option>-</option>
+            <option value="/offerslist/sort/name">A-Z</option>
+            <option value="/offerslist/sort/nameReverse">Z-A</option>
+            <option value="/offerslist/sort/price">Price from low to high</option>
+            <option value="/offerslist/sort/priceReverse">Price from high to low</option>
+        </select>
+
+        </div>
+        </div>
+
+
+
+
+
+
+
+    <table class="table table-striped table-hover ">
+        <thead>
+        <tr>
+            <th>Offer</th>
+            <th>Material</th>
+            <th>Form</th>
+            <th>Color</th>
+            <th>Price per kg</th>
+            <th> </th>
+        </tr>
+        </thead>
+        <tbody th:each="offer : ${offerList}">
+        <tr class="warning">
+            <td><a th:href="@{'/details/' + ${offer.getId()}}"> <p th:text="${offer.getOfferName()}" style="padding-top: 8px"></p></a></td>
+            <td th:text="${offer.getMaterial().name}" style="padding-top: 20px"></td>
+            <td th:text="${offer.getMaterial().form}" style="padding-top: 20px"></td>
+            <td th:text="${offer.getMaterial().color}" style="padding-top: 20px"></td>
+            <td th:text="${offer.getMaterial().price} + ' $'" style="padding-top: 20px"></td>
+            <td><a class="btn btn-danger btn-xs" th:href="@{'/wishList/addToWishList/' + ${offer.getId()}}">Add To Card</a></td>
+        </tr>
+
+        <!--</tr>-->
+        </tbody>
+    </table>
+
+
+
+</div>
+
+<div th:replace="fragments :: footer"></div>
+
+</body>
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
+<head th:fragment="links">
+
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+          integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+
+
+
+
+    <title>Shop Homepage - Start Bootstrap Template</title>
+
+    <!-- Bootstrap core CSS -->
+
+    <link href="/scripts/bootstrap.min.css" rel="stylesheet">
+
+    <link href="/css/shop-homepage.css" rel="stylesheet">
+</head>
+<body>
+<div th:fragment="header">
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="/index"><img src="/images/pLogoRC.png"></a>
+            <a>
+                <form role="search" action="/offerslist/">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12" style=" width: 330px">
+                                <div id="imaginary_container">
+                                    <div class="input-group stylish-input-group">
+                                        <input type="text" class="form-control" placeholder="Search..." id="search"
+                                               name="search">
+                                        <span class="input-group-addon">
+                        <button type="submit" class="btn btn-success btn-xs"><i class="fas fa-search"></i></button>
+                    </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                    aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="btn btn-primary btn-sm" href="/index"
+                           style="border-top-left-radius: 5px; border-bottom-left-radius: 5px; font-size: 16px"><i class="fas fa-home"></i>&nbsp;Home
+                            <span class="sr-only">(current)</span>
+                        </a>
+
+                    </li>
+                    <li class="nav-item" th:if="${!#authorization.expression('hasRole(''ROLE_USER'')')}">
+                        <a class="btn btn-primary btn-sm" style="font-size: 16px" href="/login"><i class="fas fa-sign-in-alt"></i>&nbsp;Login/Register</a>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a class="btn btn-primary btn-sm" style="font-size: 16px" href="/addOfferForm"><i class="fas fa-plus"></i>&nbsp;Offer</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-primary btn-sm" style="font-size: 16px" href="/company/list"><i class="fas fa-briefcase"></i>&nbsp;Companies</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-primary btn-sm"
+                           href="/offerslist/?material=all&materialform=allforms" style="font-size: 16px"><i class="fas fa-book-open"></i>&nbsp;Browse</a>
+                    </li>
+                    <span sec:authorize="isAuthenticated()">
+                           <div class="dropdown">
+                        <button class="btn btn-danger btn-sm dropdown-toggle" type="button" id="dropdownMenuButton"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 16px">
+                       <i class="fas fa-user">&emsp;</i><span sec:authentication="name"></span>
+
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" >
+                            <a class="dropdown-item" href="/panel"><i class="fas fa-user-circle"></i>&nbsp; Panel</a>
+                            <a class="dropdown-item" th:href="@{'/wishList/wishList/' + ${whishlist_id}}"><i class="fas fa-shopping-cart"></i>&nbsp;Cart</a>
+
+                            <a class="dropdown-item" href="#"><i class="fas fa-cog"></i>&nbsp; User Settings</a>
+                            <a class="dropdown-item" th:href="@{/logout}"><i class="fas fa-sign-out-alt"></i>&nbsp; Sign out</a>
+                        </div>
+                           </div></span>
+                    <li class="nav-item">
+                        <a class="btn btn-primary btn-sm" href="/about"
+                           style="border-top-right-radius: 5px; border-bottom-right-radius: 5px; font-size: 16px"><i class="fas fa-info-circle"></i>&nbsp;About</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Content -->
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <!------ Include the above in your HEAD tag ---------->
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+</div>
+
+<div th:fragment="footer">
+
+
+        <footer class="navbar bottom fixed-bottom">
+
+            <div class="container-fluid row ">
+                <div class="row text-center col-md-12 col-sm-12">
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <ul class="menu list-inline">
+                            <li style="padding-top: 24px">
+                                <a href="/index">Home</a>
+                            </li>
+
+                            <li>
+                                <a href="/about">About</a>
+                            </li>
+
+                            <li>
+                                <a href="#">Blog</a>
+                            </li>
+
+                            <li>
+                                <a href="#">Gallery</a>
+                            </li>
+
+                            <li>
+                                <a href="/contact">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <ul class="list-inline">
+                            <li style="padding-top: 17px">
+                                <a href="#"><i class="fa fa-facebook fa-2x"></i></a>
+                            </li>
+
+                            <li>
+                                <a href="#"><i class="fa fa-dropbox fa-2x"></i></a>
+                            </li>
+
+                            <li>
+                                <a href="#"><i class="fa fa-flickr fa-2x"></i></a>
+                            </li>
+
+                            <li>
+                                <a href="#"><i class="fa fa-github fa-2x"></i></a>
+                            </li>
+
+                            <li>
+                                <a href="#"><i class="fa fa-linkedin fa-2x"></i></a>
+                            </li>
+
+                            <li>
+                                <a href="#"><i class="fa fa-tumblr fa-2x"></i></a>
+                            </li>
+
+                            <li>
+                                <a href="#"><i class="fa fa-google-plus fa-2x"></i></a>
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </footer>
+
+        <!--<div class="copyright">-->
+        <!--<div class="container">-->
+        <!--<div class="row text-center">-->
+        <!--<p>Copyright © 2018 All rights reserved</p>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--</div>-->
+
+        <!-- Bootstrap core JavaScript -->
+        <script src="/scripts/jquery.min.js"></script>
+        <script src="/scripts/bootstrap.bundle.min.js"></script>
+</div>
+
+
+</body>
+</html>

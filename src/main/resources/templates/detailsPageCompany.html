@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
+<head th:replace="fragments :: links">
+</head>
+<body>
+
+<div th:replace="fragments :: header"></div>
+
+<div class="container" aria-orientation="vertical" >
+    <br>
+    <legend>Company details</legend>
+    <br>
+
+    <div class="row">
+        <div class="row">
+            <form th:action="@{/company/add}" th:object="${companyDetails}" method="post">
+                <input th:value="*{id}" th:field="*{id}" hidden>
+
+                <div class="row" style="width: 640px">
+                    <div class="col-md-4">
+                        <label for="companyDetails">Company name:</label>
+                    </div>
+                    <span ><div class="col-md-8"
+                                style="width: 380px">
+                        <p id="companyDetails" th:text="*{name}"></p>
+                    </div></span>
+
+
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <label for="address">Adress:</label>
+                    </div>
+                    <div class="col-md-8">
+                        <p id="address" th:text="*{address.getAllAddress()}"></p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <label for="phoneNumber">Phone number:</label>
+                    </div>
+                    <div class="col-md-8">
+                        <p id="phoneNumber" th:text="*{phoneNumber}"></p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <label for="color">E-mail: </label>
+                    </div>
+                    <div class="col-md-8">
+                        <p id="color" th:text="*{email}"></p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <label for="pricekg">NIP: </label>
+                    </div>
+                    <div class="col-md-8">
+                        <p id="pricekg" th:text="*{NIP}"></p>
+                    </div>
+                </div>
+
+                <div class="nav-item">
+                    <a style="color: hotpink" class="nav-link" th:href="@{'/company/pricelistCapacity/' + ${companyDetails.id}}">View
+                        pricelist for vehicles</a>
+                </div>
+
+                <div class="nav-item">
+                    <a style="color: hotpink" class="nav-link" th:if="${companyDetails.getAppUser().getUsername()}==${loggedUser}" th:href="@{'/company/add/changePriceList/' + ${companyDetails.id}}">Change
+                        pricelist for vehicles</a>
+                </div>
+
+                <div class="nav-item">
+                    <a style="color: hotpink" class="nav-link" th:if="${companyDetails.getAppUser().getUsername()}==${loggedUser}" th:href="@{'/company/add/changeVehicle/' + ${companyDetails.id}}">Add
+                        vehicle</a>
+                </div>
+
+                <div class="nav-item">
+                    <a style="color: hotpink" class="nav-link" th:href="@{'/company/vehicleList/' + ${companyDetails.id}}">View all vehicles</a>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+
+</div>
+</div>
+
+</div>
+
+<div th:replace="fragments :: footer"></div>
+
+</body>
+</html>

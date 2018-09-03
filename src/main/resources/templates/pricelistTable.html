@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="fragments :: links "></div>
+</head>
+<body>
+
+<div th:replace="fragments :: header"></div>
+
+
+<div class="container">
+
+    <legend>Pricelists table</legend>
+    <br>
+
+
+    <table class="table table-striped table-hover ">
+        <thead>
+        <tr>
+            <th></th>
+            <th>2t, $</th>
+            <th>5t, $</th>
+            <th>10t, $</th>
+            <th>20t, $</th>
+
+        </tr>
+        </thead>
+        <tbody th:each="company : ${companyList}">
+        <tr class>
+            <td><a th:href="@{'/company/details/' + ${company.getId()}}"><p th:text="${company.getName()}"></p>
+            </a></td>
+
+
+            <td th:text="${company.getPriceList().getPrice_2()}"></td>
+            <td th:text="${company.getPriceList().getPrice_5()}"></td>
+            <td th:text="${company.getPriceList().getPrice_10()}"></td>
+            <td th:text="${company.getPriceList().getPrice_20()}"></td>
+
+        </tr>
+
+        </tbody>
+    </table>
+
+
+
+</div>
+<div th:replace="fragments :: footer"></div>
+
+</body>
+</html>

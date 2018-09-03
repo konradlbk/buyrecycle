@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
+<head th:replace="fragments :: links">
+</head>
+<body>
+
+<div th:replace="fragments :: header"></div>
+
+<div class="container">
+    <br>
+    <legend>Current Offers</legend>
+    <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+        <option>-</option>
+        <option value="/offerslist/sort/name">A-Z</option>
+        <option value="/offerslist/sort/nameReverse">Z-A</option>
+        <option value="/offerslist/sort/price">Price from low to high</option>
+        <option value="/offerslist/sort/priceReverse">Price from high to low</option>
+    </select><br>
+
+    <table class="table table-striped table-hover ">
+        <thead>
+        <tr>
+            <th>Offer</th>
+            <th>Material</th>
+            <th>Form</th>
+            <th>Color</th>
+            <th>Price per kg</th>
+            <th> </th>
+        </tr>
+        </thead>
+        <tbody th:each="offer : ${offerListPrice}">
+        <tr class="warning">
+            <td th:text="${offer.getOfferName()}"></td>
+            <td th:text="${offer.getMaterial().name}"></td>
+            <td th:text="${offer.getMaterial().form}"></td>
+            <td th:text="${offer.getMaterial().color}"></td>
+            <td th:text="${offer.getMaterial().price}"></td>
+            <td><a class="btn btn-danger btn-xs" th:href="@{'/details/' + ${offer.getId()}}">Details</a></td>
+        </tr>
+
+        </tbody>
+    </table>
+
+
+
+</div>
+
+<div th:replace="fragments :: footer"></div>
+
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="fragments :: links"></div>
+
+</head>
+<body>
+<div th:replace="fragments :: header"></div>
+
+<div class="container marketing">
+    <div class="row">
+        <form th:action="@{'/company/add/changePriceList/'+ ${id_company}}" th:object="${priceList}" method="post">
+            <div class="row">
+                <div class="col-md-5">
+                    <label for="price_2t">Price for 2t vehicle: </label>
+                </div>
+                <div class="col-md-7">
+                    <input class="form-control" id="price_2t" th:field="*{price_2}">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-5">
+                    <label for="price_5t">Price for 5t vehicle: </label>
+                </div>
+                <div class="col-md-7">
+                    <input class="form-control" id="price_5t" th:field="*{price_5}">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-5">
+                    <label for="price_2t">Price for 10t vehicle: </label>
+                </div>
+                <div class="col-md-7">
+                    <input class="form-control" id="price_10t" th:field="*{price_10}">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-5">
+                    <label for="price_20t">Price for 20t vehicle: </label>
+                </div>
+                <div class="col-md-7">
+                    <input class="form-control" id="price_20t" th:field="*{price_20}">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-offset-3 col-md-9">
+                    <input type="submit" th:value="Submit">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div th:replace="fragments :: footer"></div>
+</body>
+</html>
